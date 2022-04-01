@@ -124,24 +124,28 @@ else:
 
 
 def check_new_channels():
-    get_channels = requests.get('https://raw.github.com/Mr-Keks/ukrainian_warior_bot/main/channels.txt').text.split()
-
     if exists("channels.txt"):
+        get_channels = requests.get('https://raw.github.com/Mr-Keks/ukrainian_warior_bot/main/daily_channels.txt').text.split()
+        
         with open("channels.txt", "r") as file:
             old_channels = [channel.strip() for channel in file.readlines()]
 
-        files_difference = set(get_channels).difference(set(old_channels))
-        if not files_difference:
-            return None
-        else:
-            channels = [channel for channel in files_difference] 
-            with open("channels.txt", "a") as file:
-                file.write("\n".join(channels))
-            return channels
+        if len(old_channels) <= len(get_channels):
+            files_difference = set(get_channels).difference(set(old_channels))
+
+            if not files_difference:
+                return None
+            else:
+                channels = [channel for channel in files_difference] 
+                with open("channels.txt", "a") as file:
+                    file.write("\n".join(channels))
+                return channels
     else:
-        with open("channels.txt", "w") as file:
-            file.write("\n".join(get_channels))
-        return get_channels
+        get_channels = requests.get('https://raw.github.com/Mr-Keks/ukrainian_warior_bot/main/channels.txt').text.split()    
+    
+    with open("channels.txt", "w") as file:
+        file.write("\n".join(get_channels))
+    return get_channels
 
 
 async def block_channels(channels):
