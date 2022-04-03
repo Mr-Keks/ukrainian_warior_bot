@@ -1,13 +1,6 @@
 import subprocess
 import sys
-
 import pkg_resources
-import configparser
-import re
-import random
-from os import system
-from os.path import exists
-
 
 def check_requirements():
     required = {"telethon", "colorama", "getpass4", "requests"}
@@ -20,19 +13,18 @@ def check_requirements():
 check_requirements()
 
 import requests
+import configparser
+from os import system
+from os.path import exists
+
+import re
+import random
 from colorama import Fore
 from getpass4 import getpass
 from telethon import events
 from telethon.sync import TelegramClient
-from environs import Env
-import configparser
-
 from telethon.tl.types import InputReportReasonOther
 from telethon.tl.functions.account import ReportPeerRequest
-
-
-import subprocess
-import sys
 
 
 system("cls || clear")
