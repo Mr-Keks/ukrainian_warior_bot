@@ -1,13 +1,9 @@
 import subprocess
 import sys
-import requests
 
 import pkg_resources
 import configparser
 import re
-import signal
-import ujson
-import asyncio
 import random
 from os import system
 from os.path import exists
@@ -23,6 +19,7 @@ def check_requirements():
 
 check_requirements()
 
+import requests
 from colorama import Fore
 from getpass4 import getpass
 from telethon import events
