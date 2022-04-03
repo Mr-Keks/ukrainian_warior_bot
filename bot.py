@@ -3,7 +3,7 @@ import sys
 import pkg_resources
 
 def check_requirements():
-    required = {"telethon", "colorama", "getpass4", "requests"}
+    required = {"telethon", "colorama", "getpass4", "requests", "asyncio"}
     installed = {pkg.key for pkg in pkg_resources.working_set}
     missing = required - installed
 
@@ -18,6 +18,7 @@ from os import system
 from os.path import exists
 
 import re
+import asyncio
 import random
 from colorama import Fore
 from getpass4 import getpass
