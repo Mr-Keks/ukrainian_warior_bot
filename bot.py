@@ -117,7 +117,7 @@ def check_new_channels():
     if exists("channels.txt"):
         get_channels = requests.get('https://raw.github.com/Mr-Keks/ukrainian_warior_bot/main/daily_channels.txt').text.split()
         
-        with open("channels.txt", "r") as file:
+        with open("daily_channels.txt", "r") as file:
             old_channels = [channel.strip() for channel in file.readlines()]
 
         if len(old_channels) <= len(get_channels):
@@ -127,7 +127,7 @@ def check_new_channels():
                 return None
             else:
                 channels = [channel for channel in files_difference] 
-                with open("channels.txt", "a") as file:
+                with open("daily_channels.txt", "a") as file:
                     file.write("\n".join(channels))
                 return channels
     else:
